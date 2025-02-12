@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
@@ -5,7 +6,6 @@ import { PagesNotFoundComponent } from './pages-not-found/pages-not-found.compon
 import { RouterModule } from '@angular/router';
 import { PagesModule } from './pages/pages.module';
 import { AppRoutingModule } from './app-routing.module';
-import { BarraCierreComponent } from './components/barra-cierre/barra-cierre.component';
 
 
 
@@ -13,13 +13,13 @@ import { BarraCierreComponent } from './components/barra-cierre/barra-cierre.com
   declarations: [
     AppComponent,
     PagesNotFoundComponent,
-    BarraCierreComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     PagesModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(withEventReplay())

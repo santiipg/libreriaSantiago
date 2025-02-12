@@ -8,7 +8,7 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {DockModule} from 'primeng/dock';
 
 @NgModule({
-  declarations: [
+  declarations:[
     BreadCrumbComponent,
     BarraNavegacionComponent,
   ],

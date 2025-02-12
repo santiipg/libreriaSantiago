@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-barra-cierre',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
   templateUrl: './barra-cierre.component.html',
   styleUrl: './barra-cierre.component.css'
 })
-export class BarraCierreComponent {
+export class BarraCierreComponent implements OnInit {
+  constructor(private router:Router) { }
+
+  ngOnInit(): void {
+  }
+
+  navigateToMain(){
+    this.router.navigateByUrl('/');
+  }
 
 }

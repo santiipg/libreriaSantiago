@@ -1,1 +1,34 @@
-<p>libros works!</p>
+<br>
+<br>
+<div class="animate__animated animate__jello">
+    <app-barra-cierre></app-barra-cierre>
+    <div class="container">
+        <div class="carrusel">
+            <div *ngFor="let libro of libros">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/{{libro.img}}" class="imagen_libro" />
+                        </div>
+                        <div class="flip-card-back">
+                            <p><strong>ID:</strong> {{libro.id}}</p>
+                            <p><strong>Nombre:</strong> {{libro.titulo}}</p>
+                            <p><strong>ISBN:</strong> {{libro.isbn}}</p>
+                            <p><strong>Imagen:</strong> {{libro.img}}</p>
+                            <p><strong>Autor:</strong> {{libro.autor.nombre}}</p>
+                            <p><strong>Tema:</strong> {{libro.tema.nombre}}</p>
+                            <p><strong>Precio:</strong> {{libro.precio|currency:"€"}}</p>
+                            <p><strong>Edición:</strong> {{libro.edicion.nombre}}</p>
+                            <p><strong>Formato:</strong> {{libro.formato.nombre}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!-- From Uiverse.io by Madflows -->
+  <button class="button" [routerLink]="['/main/nuevo-libro']">
+    <span class="button-content">Nuevo Libro</span>
+  </button>
+
+</div>

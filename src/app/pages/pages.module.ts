@@ -6,6 +6,14 @@ import { TemaComponent } from './tema/tema.component';
 import { AutorComponent } from './autor/autor.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from "../shared/shared.module";
+import { ComponentsModule } from '../components/components.module';
+import {CardModule} from 'primeng/card';
+import { NuevoLibroComponent } from './nuevo-libro/nuevo-libro.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DropdownModule } from 'primeng/dropdown';
+import {InputTextModule} from 'primeng/inputtext';
 
 
 
@@ -14,13 +22,22 @@ import { SharedModule } from "../shared/shared.module";
     MainPageComponent,
     LibrosComponent,
     TemaComponent,
-    AutorComponent
+    AutorComponent,
+    NuevoLibroComponent
   ],
   exports: [],
   imports: [
     CommonModule,
     RouterModule,
     SharedModule,
-]
+    ComponentsModule,
+    CardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    DropdownModule,
+    InputTextModule
+  ]
 })
 export class PagesModule { }

@@ -5,6 +5,7 @@ import { MainPageComponent } from './main-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TemaComponent } from './tema/tema.component';
 import { AutorComponent } from './autor/autor.component';
+import {NuevoLibroComponent} from './nuevo-libro/nuevo-libro.component';
 
 
 const routes : Routes = [
@@ -13,6 +14,7 @@ const routes : Routes = [
       {path: 'libros', component: LibrosComponent, data: {title: 'Libros'}},
       {path:'temas', component: TemaComponent, data:{title: 'Temas'}},
       {path: 'autores', component: AutorComponent, data:{title: 'Autores'}},
+      {path: 'nuevo-libro', component: NuevoLibroComponent, data:{title: 'Nuevo Libro'}},
     ]
   }
 ];

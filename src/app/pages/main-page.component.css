@@ -1,0 +1,24 @@
+.dock-window {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: hsla(211.8181818181818, 34%, 61%, 1);
+  background-image: radial-gradient(circle at 5% 1%, hsla(212.17391304347825, 28%, 52%, 1) 7%, transparent 84%), radial-gradient(circle at 7% 81%, hsla(184, 91%, 91%, 1) 16%, transparent 53%), radial-gradient(circle at 11% 29%, hsla(209.52380952380952, 42%, 70%, 1) 8%, transparent 74%), radial-gradient(circle at 39% 52%, hsla(209.00000000000003, 58%, 80%, 1) 6%, transparent 68%), radial-gradient(circle at 90% 50%, hsla(207.36842105263156, 100%, 88%, 1) 2%, transparent 85%);
+  background-blend-mode: normal, normal, normal, normal, normal;
+}
+
+.container-card {
+  width: 100%;
+  margin: 30px;
+  padding-top: 10px;
+}
+
+#bread-crumb {
+  padding-top: 10px;
+  border-left-width: 20px;
+  border-right-width: 20px;
+  width: auto;
+}
