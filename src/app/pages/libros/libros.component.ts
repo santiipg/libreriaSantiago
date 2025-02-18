@@ -21,4 +21,15 @@ export class LibrosComponent implements OnInit {
     })
   }
 
+  getPortada(libro: Libro) {
+    if(!libro.img.includes(".jpg") && !libro.img.includes(".png")){
+      return `assets/libro.png`;
+    }
+    if(libro.img.includes("http")){
+      return libro.img;
+    }
+
+    return `assets/${libro.img}`;
+  }
+
 }

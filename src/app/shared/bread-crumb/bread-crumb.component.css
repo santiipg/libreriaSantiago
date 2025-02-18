@@ -4,8 +4,3 @@
     font-size: 15px;
 }
 
-#bread-crumb:hover{
-    display: flex;
-    font-size:25px;
-    transition-duration: 0.5s;
-}

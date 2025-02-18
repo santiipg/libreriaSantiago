@@ -8,13 +8,12 @@
                 <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img src="assets/{{libro.img}}" class="imagen_libro" />
+                            <img [src]="getPortada(libro)" class="imagen_libro" />
                         </div>
                         <div class="flip-card-back">
                             <p><strong>ID:</strong> {{libro.id}}</p>
                             <p><strong>Nombre:</strong> {{libro.titulo}}</p>
                             <p><strong>ISBN:</strong> {{libro.isbn}}</p>
-                            <p><strong>Imagen:</strong> {{libro.img}}</p>
                             <p><strong>Autor:</strong> {{libro.autor.nombre}}</p>
                             <p><strong>Tema:</strong> {{libro.tema.nombre}}</p>
                             <p><strong>Precio:</strong> {{libro.precio|currency:"€"}}</p>

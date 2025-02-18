@@ -14,6 +14,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
+import {ButtonDirective} from "primeng/button";
+import {DialogModule} from 'primeng/dialog';
 
 
 
@@ -23,7 +25,7 @@ import {InputTextModule} from 'primeng/inputtext';
     LibrosComponent,
     TemaComponent,
     AutorComponent,
-    NuevoLibroComponent
+    NuevoLibroComponent,
   ],
   exports: [],
   imports: [
@@ -37,7 +39,9 @@ import {InputTextModule} from 'primeng/inputtext';
     BrowserModule,
     BrowserAnimationsModule,
     DropdownModule,
-    InputTextModule
+    InputTextModule,
+    ButtonDirective,
+    DialogModule
   ]
 })
 export class PagesModule { }
