@@ -3,6 +3,7 @@ import {AutoresService} from '../../services/autores.service';
 import {Autor} from '../../models/Autor';
 import Swal from 'sweetalert2';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-autor',
@@ -14,13 +15,19 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class AutorComponent implements OnInit {
 
   mostrarFormulario: boolean = false;
+  mostrarFormularioModificar: boolean = false;
 
   autores: Autor[] = []
   autor: Autor = new Autor();
   protected nuevoAutorFormulario: FormGroup;
+  protected modificarAutorFormulario: FormGroup;
 
   constructor(private autorService: AutoresService, private fb: FormBuilder) {
     this.nuevoAutorFormulario = this.fb.group({
+      nombre: ['', Validators.required]
+    });
+    this.modificarAutorFormulario = this.fb.group({
+      id : ['', Validators.required],
       nombre: ['', Validators.required]
     });
   }
@@ -57,6 +64,11 @@ export class AutorComponent implements OnInit {
     this.mostrarFormulario = true;
   }
 
+  public mostrarFormModificar(autor: Autor) {
+    this.obtenerInformacionPersona(autor)
+    this.mostrarFormularioModificar = true;
+  }
+
   public deleteAutor(autor: Autor) {
     Swal.fire({
       title: '¿Estás seguro?',
@@ -68,22 +80,45 @@ export class AutorComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.autorService.deleteAutor(autor.id).subscribe((response) => {
+          console.log('Respuesta del servidor:', response);
           Swal.fire({
             title: 'Autor eliminado',
             text: 'El autor ha sido eliminado correctamente',
             icon: 'success',
             confirmButtonText: 'Aceptar'
-          })
-        }, (error) => {
+          });
+        }, (error: HttpErrorResponse) => {
+          if(error.status === 400) {
+            console.log('Error al eliminar el autor: ', error.message);
+            Swal.fire({
+              title: 'Error',
+              text: 'Ha ocurrido un error al eliminar el autor',
+              icon: 'error',
+              confirmButtonText: 'Aceptar'
+            });
+          }
           console.log(error)
-          Swal.fire({
-            title: 'Error',
-            text: 'Ha ocurrido un error al eliminar el autor',
-            icon: 'error',
-            confirmButtonText: 'Aceptar'
-          })
-        })
+        });
       }
+    });
+  }
+
+  obtenerInformacionPersona(autor: Autor) {
+    this.autorService.getAutorById(autor.id).subscribe((autor) => {
+      this.modificarAutorFormulario.patchValue({
+        id: autor.id,
+        nombre: autor.nombre
+      })
     })
+  }
+  public modificarAutor(autor: Autor) {
+    this.autorService.patchAutor(this.modificarAutorFormulario.value).subscribe(
+      response => {
+        console.log('Autor updated successfully', response);
+      },
+        error => {
+          console.error('Error updating autor', error);
+        }
+    )
   }
 }

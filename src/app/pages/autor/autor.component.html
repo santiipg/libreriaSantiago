@@ -2,29 +2,42 @@
 <br>
 <app-barra-cierre></app-barra-cierre>
 <div class="container">
+
+  <button pButton style="margin:1rem" label="Nuevo Autor" class="p-button-success" icon="pi pi-plus"
+          (click)="mostrarForm()"></button>
   <div class="container_autor">
-    <button pButton style="margin:1rem" label="Nuevo Autor" class="p-button-success" icon="pi pi-plus"
-            (click)="mostrarForm()"></button>
     <div class="card_autor" *ngFor="let autor of autores">
       <p class="autor_name">
         {{ autor.nombre }}
       </p>
       <div>
-        <button pButton style="margin-right: 1rem" class="p-button-warning" icon="pi pi-pencil"></button>
+        <button pButton style="margin-right: 1rem" class="p-button-warning" icon="pi pi-pencil" (click)="mostrarFormModificar(autor)"></button>
         <button pButton class="p-button-danger" icon="pi pi-times" (click)="deleteAutor(autor)"></button>
       </div>
+      <p-dialog header="Nuevo Autor" [(visible)]="mostrarFormulario" [modal]="true" [style]="{width: '50vw'}">
+        <form [formGroup]="nuevoAutorFormulario">
+          <div>
+            <label for="nombre">Nombre:</label>
+            <input id="nombre" formControlName="nombre"/>
+          </div>
+        </form>
+        <div class="p-buttonset">
+          <button pButton type="button" label="Guardar" (click)="addAutor()"></button>
+          <button pButton type="button" label="Cancelar" (click)="mostrarFormulario = false"></button>
+        </div>
+      </p-dialog>
+      <p-dialog header="Editar autor" [(visible)]="mostrarFormularioModificar" [modal]="true" [style]="{width: '50vw'}">
+        <form [formGroup]="modificarAutorFormulario">
+          <div>
+            <label for="nombre">Nombre:</label>
+            <input id="nombreModificar" formControlName="nombre"/>
+          </div>
+        </form>
+        <div class="p-buttonset">
+          <button pButton type="button" label="Guardar" (click)="modificarAutor(autor)"></button>
+          <button pButton type="button" label="Cancelar" (click)="mostrarFormularioModificar = false"></button>
+        </div>
+      </p-dialog>
     </div>
   </div>
-  <p-dialog header="Nuevo Autor" [(visible)]="mostrarFormulario" [modal]="true" [style]="{width: '50vw'}">
-    <form [formGroup]="nuevoAutorFormulario">
-      <div>
-        <label for="nombre">Nombre:</label>
-        <input id="nombre" formControlName="nombre"/>
-      </div>
-    </form>
-    <div class="p-buttonset">
-      <button pButton type="button" label="Guardar" (click)="addAutor()"></button>
-      <button pButton type="button" label="Cancelar" (click)="mostrarFormulario = false"></button>
-    </div>
-  </p-dialog>
 </div>
